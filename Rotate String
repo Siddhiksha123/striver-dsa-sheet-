@@ -1,0 +1,81 @@
+Method-1 --->>> Concatenation
+
+
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        // Check if the lengths are equal
+        if (s.length() != goal.length()) {
+            return false;
+        }
+
+        // Concatenate the original string with itself
+        string concatenated = s + s;
+
+        // Check if the rotated string is a substring of the concatenated string
+        return concatenated.find(goal) != string::npos;
+    }
+};
+
+Time Complexity:
+
+The find function is used to check if goal is a substring of the concatenated string. The worst-case time complexity of find is O(M * N), where M is the length of the pattern (goal) and N is the length of the concatenated string. In this case, it is O(N^2) because the concatenated string has a length of 2N.
+Therefore, the overall time complexity is O(N^2)
+
+Space Complexity:
+
+Space Complexity:
+
+The space complexity is primarily determined by the concatenated string (s + s), which has a length of 2N.
+The additional space used for other variables (like concatenated) is O(N).
+Therefore, the overall space complexity is O(N).
+
+
+
+Method -2 --->>> Substrings 
+
+
+class Solution{
+    public:
+     bool rotateString( string s , string goal)
+     {
+         int n = s.size();
+         while(n--)
+         {
+             string str2= s.substr(1);
+             char ch=s[0];
+             str2=str2+ch;
+             if(str2==goal)
+             {
+                 return true;
+             }
+
+             s= str2;
+         }
+
+         return false;
+     }
+};
+
+
+
+Time Complexity:
+string str2 = s.substr(1);: This operation takes O(n) time as it involves creating a substring of size n-1.
+
+char ch = s[0];: This operation takes O(1) time as it involves accessing a character at a specific index.
+
+str2 = str2 + ch;: Concatenating two strings takes O(m) time, where m is the size of the resulting string. In this case, it is O(n-1) as the size of str2 is n-1.
+
+if (str2 == goal) {...}: This comparison takes O(n) time in the worst case, where n is the size of the strings being compared.
+
+The total time complexity of the while loop is O(n * (n + n-1)) = O(n^2).
+
+Therefore, the overall time complexity of the rotateString function is O(n^2)
+
+
+
+Space Complexity:
+
+Overall, the space complexity is determined by the space required for the substring (str2). Since this substring is created in each iteration of the loop, the total space complexity is O(n-1) + O(n-1) = O(n).
+
+In summary, the space complexity of the rotateString function is O(n), where n is the size of the input string s.
