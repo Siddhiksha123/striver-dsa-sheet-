@@ -1,0 +1,21 @@
+
+Brute:
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int  n = nums.size();
+        vector<int>temp(n);
+        
+        for( int i =0 ; i< nums.size() ; i++)
+        {
+          temp[(i+k)%n] = nums[i];
+        }
+
+        nums = temp;
+    }
+};
+
+Optimized:
+https://leetcode.com/problems/rotate-array/solutions/1730142/java-c-python-a-very-very-well-detailed-explanation
+
+
